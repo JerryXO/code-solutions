@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+void k_smallest(int arr[],int n,int k){
+    priority_queue<int>max_heap;
+    for(int i=0;i<n;i++){
+        max_heap.push(arr[i]);
+        if(max_heap.size()>k){
+            max_heap.pop();
+        }
+    }
+
+    while(!max_heap.empty()){
+        cout<<max_heap.top()<<" ";
+        max_heap.pop();
+    }
+}
+
+int main(){
+    int arr[]={7,10,4,3,20,15};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    k_smallest(arr,n,3);
+    return 0;
+}
