@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int longest_substring(string s1,string s2,int m,int n){
+    int t[m+1][n+1];
+    int res=0;
+    for(int i=0;i<m+1;i++){
+        for(int j=0;j<n+1;j++){
+            if(i==0 || j==0){
+                t[i][j]=0;
+            }
+
+            else if(s1[i-1]==s2[j-1]){
+                t[i][j]=1+t[i-1][j-1];
+                res=max(t[i][j],res);
+            }
+            else{
+                t[i][j]=0;
+            }
+        }
+    }
+    return res;
+}
+
+int main(){
+    string s1="OldSite:GeeksforGeeks.org";
+    string s2="NewSite:GeeksQuiz.com";
+    int m=s1.length();
+    int n=s2.length();
+    cout<<longest_substring(s1,s2,m,n);
+    return 0;
+}
